@@ -18,7 +18,8 @@
     "mongoose": "^5.4.1",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "body-parser": "latest"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,5 +1,9 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _mongoose = require("mongoose");
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
@@ -16,3 +20,5 @@ var schema = new _mongoose2.default.Schema({
     }]
 });
 var Order = _mongoose2.default.model('Order', schema);
+
+exports.default = Order;

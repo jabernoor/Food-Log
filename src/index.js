@@ -4,8 +4,9 @@ import dotenv from 'dotenv';
 import session from 'express-session'
 import passport from 'passport'
 import redis from "redis";
-import orderRouter from "./orders/router";
+import indexRouter from "./indexRouter";
 import redisConnect from 'connect-redis';
+import bodyParser from 'body-parser'
 
 const redisStore = redisConnect(session);
 const app = express();
@@ -28,7 +29,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/orders',orderRouter);
+app.use('/',indexRouter);
 
 mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true });
 

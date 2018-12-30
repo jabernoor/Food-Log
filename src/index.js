@@ -5,9 +5,9 @@ import session from 'express-session'
 import passport from 'passport'
 import redis from "redis";
 import indexRouter from "./indexRouter";
+import jade from "jade";
 import redisConnect from 'connect-redis';
-import bodyParser from 'body-parser'
-
+import bodyParser from 'body-parser';
 const redisStore = redisConnect(session);
 const app = express();
 const client = redis.createClient();
@@ -36,8 +36,11 @@ mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true });
 client.on('error', function (err) {
     console.log('Something went wrong ' + err);
 });
+
 client.on('connect', function () {
     console.log('Redis client connected');
 });
 
-app.listen(3000);
+app.listen(process.env.PORT,()=>{
+    console.log(`listening at ${process.env.PORT}`);
+});

@@ -28,6 +28,10 @@ var _indexRouter = require('./indexRouter');
 
 var _indexRouter2 = _interopRequireDefault(_indexRouter);
 
+var _jade = require('jade');
+
+var _jade2 = _interopRequireDefault(_jade);
+
 var _connectRedis = require('connect-redis');
 
 var _connectRedis2 = _interopRequireDefault(_connectRedis);
@@ -66,8 +70,11 @@ _mongoose2.default.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 client.on('error', function (err) {
     console.log('Something went wrong ' + err);
 });
+
 client.on('connect', function () {
     console.log('Redis client connected');
 });
 
-app.listen(3000);
+app.listen(process.env.PORT, function () {
+    console.log('listening at ' + process.env.PORT);
+});

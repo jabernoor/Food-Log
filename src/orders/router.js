@@ -1,11 +1,12 @@
 import express from 'express'
-
-import model from "./model";
+import order from '../schemes/Order'
 
 const router = express.Router();
 
 router.get('/',(req,res)=>{
-
+   const orderId = req.query.orderId;
+   order.find({orderId,creatorId:req.user.id});
+   res.send(req.user._json);
 });
 
 router.post('/',(req,res)=>{

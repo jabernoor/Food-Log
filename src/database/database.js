@@ -15,4 +15,4 @@ const sequelize = new Sequelize('food_server', 'root', 'root', {
     },
 });
 
-module.exports = sequelize;
+export default sequelize;

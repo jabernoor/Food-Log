@@ -1,0 +1,42 @@
+  type FoodProvider {
+    id: String,
+    name: String,
+    description: String,
+    phoneNumber: String,
+    avatar: String
+  }
+  type User{
+      id: String,
+      name: String,
+      email: String,
+      imagePath: String,
+      oauthProvider: String
+  
+  }
+  type OrderEntry {
+      id: String,
+      unit: Unit    
+  },
+  type Order {
+    id: String,
+    date: String,
+    provider: FoodProvider,
+    creator: User,
+    entries:[OrderEntry]
+  },
+  
+  type Unit {
+    id: String,
+    description: String,
+    provider: FoodProvider,
+    price: String,
+    currency: String 
+  }
+  type Query {
+    provider: FoodProvider,
+    order: Order,
+    orderEntry: OrderEntry,
+    unit(id: String!): Unit ,
+    user: User,
+
+  }

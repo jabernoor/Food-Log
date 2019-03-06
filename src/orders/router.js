@@ -1,5 +1,5 @@
 import express from 'express'
-import order from '../schemes/Order'
+import order from '../schemes/OrderSchema'
 
 const router = express.Router();
 

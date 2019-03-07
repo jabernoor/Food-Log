@@ -14,5 +14,6 @@ const sequelize = new Sequelize('food_server', 'root', 'root', {
         idle: 10000
     },
 });
-
+sequelize.query("SET foreign_key_checks = 0;").spread((results, metadata) => {
+})
 export default sequelize;

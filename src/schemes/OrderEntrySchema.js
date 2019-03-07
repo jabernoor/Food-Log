@@ -1,8 +1,8 @@
 import database from '../database/database'
 import {Sequelize as datatype} from 'sequelize'
-import Unit from './Unit'
+import Unit from './UnitSchema'
 import User from './UserSchema'
-import Order from './Order'
+import Order from './OrderSchema'
 import config from '../database/config'
 
 const OrderEntry = database.define('order_entries',{
@@ -20,7 +20,7 @@ const OrderEntry = database.define('order_entries',{
 
     },
     user_id:{
-        type: datatype.BIGINT,                
+        type: datatype.STRING,                
         references:{
             model: User,
             key: 'id'

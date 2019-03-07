@@ -4,9 +4,8 @@ import config from '../database/config'
 
 const User = database.define('user', {
     id: {
-        type: datatype.BIGINT,
-        primaryKey: true,
-        autoIncrement: true
+        type: datatype.STRING,
+        primaryKey: true
     },
     name: {
         type: datatype.STRING

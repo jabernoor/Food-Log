@@ -1,10 +1,12 @@
 import express from 'express';
 import ordersRouter from './orders/router';
+import orderEntryRouter from './order-entries/router';
+import foodProviderRouter from './food-providers/router';
 import oAuthRouter from './oauth/router';
 import express_graphql from "express-graphql";
 import fs from 'fs'
 import path from 'path'
-
+import root from './graphql/resolvers/root'
 
 const router = express.Router();
 import {
@@ -14,6 +16,8 @@ const stringSchema = fs.readFileSync(path.join(__dirname, "/graphql/schema.graph
 var schema = buildSchema(stringSchema);
 
 router.use('/orders', ordersRouter);
+router.use('/order/entry', orderEntryRouter);
+router.use('/providers', foodProviderRouter);
 router.use('/oauth', oAuthRouter);
 router.use('/dashboard', (req, res) => {
     res.render('dashboard');

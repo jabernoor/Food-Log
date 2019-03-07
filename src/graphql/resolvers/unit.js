@@ -1,20 +1,14 @@
 import unit from '../../schemes/UnitSchema'
+import { applyResultTransforms } from 'graphql-tools/dist/transforms/transforms';
 const unitResolver = (args) => {
-        console.log(args)
-        
-        unit.       
-        return {
-            "id": 1,
-            "description": "Grilled Chicken",
-            "provider": {
-                "id": "12",
-                "name": "alia",
-                "description": "alia central restuarant",
-                "phoneNumber": "1953535",
-                "avatar": "avatar goes here"
-            },
-            "price": "2.5",
-            "currency": "JOD"
+    console.log(`here we are hgggggggggggggggggggggggggggggggggggggggggggggg ${args}`)
+    unit.findAll({
+        where: {
+            id: args.id
         }
+    }).then(results=>{
+        console.log(results);
+    })
+    return results;
 }
 export default unitResolver

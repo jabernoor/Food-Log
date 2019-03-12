@@ -1,14 +1,37 @@
 import unit from '../../schemes/UnitSchema'
-import { applyResultTransforms } from 'graphql-tools/dist/transforms/transforms';
-const unitResolver = (args) => {
-    console.log(`here we are hgggggggggggggggggggggggggggggggggggggggggggggg ${args}`)
-    unit.findAll({
-        where: {
-            id: args.id
-        }
-    }).then(results=>{
-        console.log(results);
-    })
-    return results;
+import schema from '../../schemes/UnitSchema';
+import FoodProvider from './provider'
+
+class Unit {
+
+    constructor(id){
+        return (async () => {
+            this.id = id;
+            this.source = await schema.findByPk(id,{raw:true});
+            return this;
+        })();
+    }
+    
+    id(){
+        
+        return this.source.id;
+    }
+    
+    description(){
+        return this.source.description;
+    }
+    
+    price(){
+        return this.source.price;        
+    }
+
+    currency(){
+        return this.source.currency;
+    }
+
+    async provider(){
+        return await new FoodProvider(this.source.provider_id);
+    }
+
 }
-export default unitResolver
+export default Unit

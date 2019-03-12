@@ -13,8 +13,8 @@ export const create = (params) => {
 };
 
 export const findOrCreate = (params) => {
-    console.log(params);
     sequelize.transaction(function (t) {
+        console.log(params);
         return User.findOrCreate({
             where: {
                 id: params.id,

@@ -1,15 +1,33 @@
-const unitResolver = ()=>{
-    return `"id": 1,
-    "description": "Grilled Chicken",
-    "provider":{
-        "id": "12",
-        "name": "alia",
-        "description": "alia central restuarant",
-        "phoneNumber": "1953535",
-        "avatar": "avatar goes here"            
-    },
-    "price":"2.5",
-    "currency":"JOD"    
-`
+import schema from '../../schemes/FoodProviderSchema';
+
+class FoodProvider {
+
+    constructor(id){
+        return (async () => {
+            this.id = id;
+            this.source = await schema.findByPk(id,{raw:true});
+            return this; // when done
+        })();
+    }
+    id(){
+        return this.source.id;
+    }
+    
+    name(){
+        return this.source.name;
+    }
+    
+    description(){
+        return this.source.description;        
+    }
+
+    phoneNumber(){
+        return this.source.phoneNumber;
+    }
+
+    avatar(){
+        return this.source.avatar;
+    }
+
 }
-export default unitResolver
+export default FoodProvider

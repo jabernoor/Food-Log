@@ -34,7 +34,6 @@ router.use('/graphql', express_graphql({
     schema: schema,
     rootValue: root,
     graphiql: true
-
 }));
 
 export default router;

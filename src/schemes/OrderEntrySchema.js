@@ -17,7 +17,6 @@ const OrderEntry = database.define('order_entries',{
             model: Unit,
             key: 'id'
         }        
-
     },
     user_id:{
         type: datatype.STRING,                

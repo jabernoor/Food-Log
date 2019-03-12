@@ -1,15 +1,35 @@
-const unitResolver = ()=>{
-    return `"id": 1,
-    "description": "Grilled Chicken",
-    "provider":{
-        "id": "12",
-        "name": "alia",
-        "description": "alia central restuarant",
-        "phoneNumber": "1953535",
-        "avatar": "avatar goes here"            
-    },
-    "price":"2.5",
-    "currency":"JOD"    
-`
+import schema from '../../schemes/UserSchema';
+
+class User {
+
+    constructor(id){
+        return (async () => {
+            this.id = id;
+            this.source = await schema.findByPk(id,{raw:true});
+            return this;
+        })();
+    }
+    
+    id(){
+        
+        return this.source.id;
+    }
+    
+    name(){
+        return this.source.name;
+    }
+    
+    email(){
+        return this.source.email;        
+    }
+
+    imagePath(){
+        return this.source.imagePath;
+    }
+
+    oauthProvider(){
+        return this.source.oauthProvider;
+    }
+
 }
-export default unitResolver
+export default User

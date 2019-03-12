@@ -1,15 +1,25 @@
-const unitResolver = ()=>{
-    return `"id": 1,
-    "description": "Grilled Chicken",
-    "provider":{
-        "id": "12",
-        "name": "alia",
-        "description": "alia central restuarant",
-        "phoneNumber": "1953535",
-        "avatar": "avatar goes here"            
-    },
-    "price":"2.5",
-    "currency":"JOD"    
-`
+import schema from '../../schemes/OrderEntrySchema';
+import Unit from './unit'
+
+class OrderEntry {
+
+    constructor(id){
+        return (async () => {
+            this.id = id;
+            this.source = await schema.findByPk(id,{raw:true});
+            console.log(`source is here: ${id}`);
+            return this; // when done
+        })();
+    }
+    
+    id(){
+        
+        return this.source.id;
+    }
+    
+    async unit(){
+        return await new Unit(this.source.unit_id);
+    }
+
 }
-export default unitResolver
+export default OrderEntry;

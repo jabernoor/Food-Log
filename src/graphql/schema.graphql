@@ -41,5 +41,5 @@ type Query {
   order(id: String!): Order,
   orderEntry: OrderEntry,
   unit(id: String!): Unit ,
-  user(id:String!): User,
+  user(id:String , email: String): User,
 }

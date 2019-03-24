@@ -1,40 +1,28 @@
+'use strict';
+
 import express from 'express';
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
-import session from 'express-session'
 import passport from 'passport'
-import redis from "redis";
 import indexRouter from "./indexRouter";
 import ordersRouter from "./orders/router";
-import jade from "jade";
-import redisConnect from 'connect-redis';
+import pug from "pug";
 import bodyParser from 'body-parser';
-const redisStore = redisConnect(session);
-const app = express();
-const client = redis.createClient();
+import helmet from 'helmet'
 import root from './graphql/resolvers/root'
-import User from './graphql/models/User'
+import sessionConfig from './middlewares/session-config'
+const app = express();
 
 
 dotenv.config();
-const user = new User();
-user.setEmail('njaber@atypon.com');
-console.log(user.getEmail());
-app.use(session({
-    secret: 's3cr3t',
-    store: new redisStore({
-        host: 'localhost',
-        client: client,
-        ttl: 260
-    }),
-    saveUninitialized: false,
-    resave: false
-}));
 
+app.use(sessionConfig);
+
+app.use(helmet())
 app.use(passport.initialize());
 app.use(passport.session());
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -42,14 +30,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/', indexRouter);
-
-client.on('error', function (err) {
-    console.log('Something went wrong ' + err);
-});
-
-client.on('connect', function () {
-    console.log('Redis client connected');
-});
 
 app.listen(process.env.PORT, () => {
     console.log(`listening at ${process.env.PORT}`);

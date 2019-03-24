@@ -30,6 +30,14 @@ class User {
     oauthProvider(){
         return this.source.oauthProvider;
     }
+    
+    createdAt(){
+        return this.source.createdAt;
+    }
+
+    updatedAt(){
+        return this.source.updatedAt;
+    }
 
 }
 export default User

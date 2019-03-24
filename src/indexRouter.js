@@ -3,7 +3,7 @@ import ordersRouter from './orders/router';
 import orderEntryRouter from './order-entries/router';
 import foodProviderRouter from './food-providers/router';
 import oAuthRouter from './oauth/router';
-import express_graphql from "express-graphql";
+import graphqlHTTP from "express-graphql";
 import fs from 'fs'
 import path from 'path'
 import root from './graphql/resolvers/root'
@@ -30,7 +30,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.use('/graphql', express_graphql({
+router.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,
     graphiql: true

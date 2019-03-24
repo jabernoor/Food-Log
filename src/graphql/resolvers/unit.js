@@ -32,6 +32,14 @@ class Unit {
     async provider(){
         return await new FoodProvider(this.source.provider_id);
     }
+    
+    createdAt(){
+        return this.source.createdAt;
+    }
+
+    updatedAt(){
+        return this.source.updatedAt;
+    }
 
 }
 export default Unit

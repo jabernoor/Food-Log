@@ -46,6 +46,14 @@ class Order {
             return objects;
         })
     }
+    
+    createdAt(){
+        return this.source.createdAt;
+    }
+
+    updatedAt(){
+        return this.source.updatedAt;
+    }
 
 
 }

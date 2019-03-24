@@ -13,7 +13,7 @@ const FoodProvider = database.define('food_providers',{
     description:{
         type: datatype.STRING,
     },
-    phone_number:{
+    phoneNumber:{
         type: datatype.STRING,
     },
     avatar:{

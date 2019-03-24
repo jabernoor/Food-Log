@@ -29,5 +29,12 @@ class FoodProvider {
         return this.source.avatar;
     }
 
+    createdAt(){
+        return this.source.createdAt;
+    }
+
+    updatedAt(){
+        return this.source.updatedAt;
+    }
 }
 export default FoodProvider

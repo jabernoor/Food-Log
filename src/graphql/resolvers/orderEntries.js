@@ -21,5 +21,14 @@ class OrderEntry {
         return await new Unit(this.source.unit_id);
     }
 
+    createdAt(){
+        return this.source.createdAt;
+    }
+
+    updatedAt(){
+        return this.source.updatedAt;
+    }
+
+
 }
 export default OrderEntry;

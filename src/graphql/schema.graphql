@@ -3,22 +3,41 @@ type FoodProvider {
   name: String,
   description: String,
   phoneNumber: String,
+  avatar: String,
+  createdAt: String,
+  updatedAt: String
+}
+input FoodProviderInput {
+  name: String
+  description: String,
+  phoneNumber: String,
   avatar: String
 }
-
 type User{
     id: String,
     name: String,
     email: String,
     imagePath: String,
     oauthProvider: String
-
 }
+
+input UserInput{
+    name: String,
+    email: String,
+    imagePath: String,
+    oauthProvider: String
+},
 
 type OrderEntry {
     id: String,
     unit: Unit    
 },
+
+input OrderEntryInput{
+  unit_id: String,
+  user_id: String,
+  order_id: String
+}
 
 type Order {
   id: String,
@@ -27,11 +46,22 @@ type Order {
   creator: User,
   entries:[OrderEntry]
 },
+input OrderInput{
+  date: String,
+  provider_id: String,
+  creatorId:String  
+}
 
 type Unit {
   id: String,
   description: String,
   provider: FoodProvider,
+  price: String,
+  currency: String 
+}
+input UnitInput{
+  description: String,
+  provider_id: String,
   price: String,
   currency: String 
 }
@@ -42,4 +72,17 @@ type Query {
   orderEntry: OrderEntry,
   unit(id: String!): Unit ,
   user(id:String , email: String): User,
+}
+
+type Subscription {
+  fooder(id: String!): FoodProvider,
+}
+
+type Mutation {
+  createFoodProvider(input: FoodProviderInput): FoodProvider
+  createUnit(input: UnitInput): Unit
+  createOrder(input: OrderInput): String
+  createOrderEntry(input: OrderEntryInput): String
+  createUser(input: UserInput): User
+  updateFoodProvider(input: FoodProviderInput, id: String): FoodProvider
 }

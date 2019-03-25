@@ -12,10 +12,8 @@ import {
     UnitCrud
 } from '../../schemes/crud/crud'
 
-export default root = {
-    order: async ({
-        id
-    }) => {
+export default {
+    order: async ({id}) => {
         return await new Order(id);
     },
     provider: async ({

@@ -1,11 +1,27 @@
 import schema from '../../schemes/FoodProviderSchema';
+import cache from '../../database/redis'
 
 class FoodProvider {
 
     constructor(id){
         return (async () => {
             this.id = id;
-            this.source = await schema.findByPk(id,{raw:true});
+            let cacheKey = `provider_${id}`;
+            let status = await cache.existsAsync(cacheKey).then(reply=>{
+                return reply;
+            });
+            if(status == 1){
+                var cachedValue = await cache.getAsync(cacheKey).then(result=>{
+                    return result;
+                });
+                this.source = JSON.parse(cachedValue);
+                console.debug("Getting graphQL values from redis cache ...... ");
+            } else {
+                this.source = await schema.findByPk(id,{raw:true});
+                console.debug("Getting graphQL values from database ...... ");
+                if(this.source != null)
+                    cache.set(cacheKey,JSON.stringify(this.source));
+            }
             return this; // when done
         })();
     }

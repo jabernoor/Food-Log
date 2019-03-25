@@ -12,12 +12,15 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^2.4.8",
+    "bluebird": "^3.5.3",
     "body-parser": "latest",
+    "compression": "^1.7.4",
     "connect-redis": "^3.4.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "express-session": "^1.15.6",
+    "figlet": "^1.2.1",
     "graphql": "^14.1.1",
     "graphql-import": "0.7.1",
     "graphql-subscriptions": "1.0.0",
@@ -31,6 +34,7 @@
     "passport-google-oauth": "^1.0.0",
     "pug": "2.0.3",
     "redis": "^2.8.0",
+    "response-time": "^2.3.2",
     "sequelize": "^4.42.0",
     "subscriptions-transport-ws": "0.9.15"
   },

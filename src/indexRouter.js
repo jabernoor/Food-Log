@@ -6,7 +6,7 @@ import oAuthRouter from './oauth/router';
 import graphqlHTTP from "express-graphql";
 import fs from 'fs'
 import path from 'path'
-import root from './graphql/resolvers/root'
+import resolvers from './graphql/resolvers/root'
 
 const router = express.Router();
 import {
@@ -32,7 +32,7 @@ router.get('/login', (req, res) => {
 
 router.use('/graphql', graphqlHTTP({
     schema: schema,
-    rootValue: root,
+    rootValue: resolvers,
     graphiql: true
 }));
 

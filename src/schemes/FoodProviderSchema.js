@@ -23,4 +23,6 @@ const FoodProvider = database.define('food_providers',{
 
 FoodProvider.sync({force: config.forceSync});
 
+FoodProvider.cacheKeyPrefix = "food_provider_"
+
 export default FoodProvider;

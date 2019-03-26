@@ -1,73 +1,67 @@
 import schema from '../../schemes/OrderSchema';
+import {
+    findByPK
+} from '../../schemes/crud/crud';
 import OrderEntrySchema from '../../schemes/OrderEntrySchema';
 import FoodProvider from './provider'
 import OrderEntry from './orderEntries'
 import User from './user';
-import cache from '../../database/redis'
+import cacheService from '../../cache/cache-service'
 class Order {
 
-    constructor(id){
+    constructor(id) {
         return (async () => {
             this.id = id;
-            let cacheKey = `order_${id}`;
-            let status = await cache.existsAsync(cacheKey).then(reply=>{
-                return reply;
-            });
-            if(status == 1){
-                var cachedValue = await cache.getAsync(cacheKey).then(result=>{
-                    return result;
-                });
-                this.source = JSON.parse(cachedValue);
-                console.debug("Getting graphQL values from redis cache ...... ");
-            } else {
-                this.source = await schema.findByPk(id,{raw:true});
-                console.debug("Getting graphQL values from database ...... ");
-                if(this.source != null)
-                    cache.set(cacheKey,JSON.stringify(this.source));
-            }
+            this.source = await findByPK(schema, id);
             return this; // when done
         })();
     }
-    id(){
+    id() {
         return this.source.id;
     }
-    
-    date(){
+
+    date() {
         return this.source.date;
     }
-    
-    async provider(){
-        return await new FoodProvider(this.source.provider_id);        
+
+    async provider() {
+        return await new FoodProvider(this.source.provider_id);
     }
-    async creator(){
+    async creator() {
         return await new User(this.source.creatorId);
     }
-    async entries(){
+    async entries() {
         let ret = await this.getEntries(this.source.id);
         return ret;
     }
-    async getEntries(id){
-        return await OrderEntrySchema.findAll({
-            where:{
-                order_id:id
-            },
-            raw:true,
-            attributes: ['id']
-        }).then(async rows=>{
-            let objects = [];
-            for(var i =0;i<rows.length;++i){
-                let object = await new OrderEntry(rows[i].id);
-                objects.push(object);
+    async getEntries(id) {
+        const cacheKey = `entries_of_${id}`;
+        let ids = await cacheService.get(cacheKey);
+        let entries = [];
+        if (ids == null || ids.length == 0) {
+            ids = await OrderEntrySchema.findAll({
+                where: {
+                    order_id: id
+                },
+                raw: true,
+                attributes: ['id']
+            })
+            cacheService.set(cacheKey, ids);
+        }
+        if (ids != null) {
+            for (var i = 0; i < ids.length; ++i) {
+                let entry = await new OrderEntry(ids[i].id);
+                entries.push(entry);
             }
-            return objects;
-        })
+        }
+        return entries;
     }
-    
-    createdAt(){
+
+    createdAt() {
         return this.source.createdAt;
     }
 
-    updatedAt(){
+    updatedAt() {
         return this.source.updatedAt;
     }
 

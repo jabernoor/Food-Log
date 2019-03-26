@@ -24,4 +24,6 @@ const User = database.define('user', {
 
 User.sync({force: config.forceSync});
 
+User.cacheKeyPrefix = "user_";
+
 export default User;

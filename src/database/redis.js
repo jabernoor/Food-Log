@@ -1,9 +1,6 @@
-import redis from "redis";
-import bluebird from 'bluebird';
+import Redis from "ioredis";
 
-bluebird.promisifyAll(redis.RedisClient.prototype);
-
-const client = redis.createClient();
+export const client = new Redis();
 
 client.on('error', function (err) {
     console.log('Something went wrong ' + err);
@@ -14,4 +11,4 @@ client.on('connect', function () {
 });
 
 
-export default client;
+export const ttl = 24 * 60 * 60;

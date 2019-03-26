@@ -31,4 +31,6 @@ const Unit = database.define('units',{
 
 Unit.sync({force:config.forceSync});
 
+Unit.cacheKeyPrefix = "unit_";
+
 export default Unit;

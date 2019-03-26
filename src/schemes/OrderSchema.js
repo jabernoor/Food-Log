@@ -31,4 +31,5 @@ const Order = database.define('orders',{
 
 Order.sync({force:config.forceSync});
 
+Order.cacheKeyPrefix = "order_"
 export default Order;

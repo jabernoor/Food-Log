@@ -35,4 +35,6 @@ const OrderEntry = database.define('order_entries',{
 })
 OrderEntry.sync({force:config.forceSync});
 
+OrderEntry.cacheKeyPrefix = "order_entry_";
+
 export default OrderEntry;

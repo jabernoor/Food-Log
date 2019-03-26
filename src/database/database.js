@@ -8,7 +8,7 @@ const sequelize = new Sequelize('food_server', 'root', 'root', {
     operatorsAliases: false,
 
     pool: {
-        max: 10,
+        max: 1000,
         min: 5,
         acquire: 30000,
         idle: 10000

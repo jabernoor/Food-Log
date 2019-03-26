@@ -25,6 +25,7 @@
     "graphql-import": "0.7.1",
     "graphql-subscriptions": "1.0.0",
     "helmet": "^3.16.0",
+    "ioredis": "^4.9.0",
     "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.4.1",
     "morgan": "^1.9.1",

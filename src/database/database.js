@@ -3,7 +3,8 @@ import mysql from "mysql";
 import Sequelize from "sequelize";
 
 const sequelize = new Sequelize('food_server', 'root', 'root', {
-    host: 'localhost',
+    host: 'mysql',
+    port: 3306,
     dialect: 'mysql',
     operatorsAliases: false,
 

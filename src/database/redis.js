@@ -1,6 +1,6 @@
 import Redis from "ioredis";
 
-export const client = new Redis();
+export const client = new Redis('redis');
 
 client.on('error', function (err) {
     console.log('Something went wrong ' + err);

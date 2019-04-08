@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  app:
+    build: .
+    depends_on:
+      - redis
+      - mysql
+  
+  redis:
+    image: 'redis:latest'
+    ports:
+      - 6397:6397
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - MYSQL_ROOT_PASSWORD="root"
+    ports:
+      - 3307:3306

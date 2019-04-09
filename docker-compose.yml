@@ -2,17 +2,29 @@ version: '2.1'
 services:
   app:
     build: .
+    links: 
+      - mysql:mysql
     depends_on:
       - redis
       - mysql
-  
+    ports:
+      - 5000:5000
   redis:
     image: 'redis:latest'
     ports:
       - 6397:6397
   mysql:
     image: 'mysql:latest'
-    environment:
-      - MYSQL_ROOT_PASSWORD="root"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     ports:
-      - 3307:3306
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - data-volume:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+    
+volumes:
+  data-volume:

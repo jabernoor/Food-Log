@@ -11,12 +11,16 @@ class CacheService {
     }
 
     async get(key) {
-        return await cache.get(key).then(t => {
-            return t;
-        }).catch(e => {
-            console.error(e);
-            return null;
-        });
+
+
+
+        // return await cache.get(key).then(t => {
+        //     return t;
+        // }).catch(e => {
+        //     console.error(e);
+        //     return null;
+        // });
+        return null;
     }
 
     async set(key, value) {

@@ -1,7 +1,9 @@
 version: '2.1'
 services:
   app:
-    build: .
+    build: ./
+    volumes: 
+      - npm-cache:/root/.npm
     links: 
       - mysql:mysql
     depends_on:
@@ -18,7 +20,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
@@ -28,3 +30,5 @@ services:
     
 volumes:
   data-volume:
+  npm-cache:
+    external: false

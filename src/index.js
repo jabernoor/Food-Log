@@ -1,8 +1,8 @@
 'use strict';
 
+require('dotenv').config();
 import express from 'express';
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
 import passport from 'passport'
 import indexRouter from "./indexRouter";
 import ordersRouter from "./orders/router";
@@ -16,7 +16,8 @@ import figlet from 'figlet'
 const app = express();
 
 
-dotenv.config();
+console.log('AFTER DOTENV CONFIG: '+process.env.DB_HOST);
+console.log('AFTER DOTENV CONFIG: '+process.env.DB_PORT);
 
 app.use(compression())
 app.use(sessionConfig);
@@ -40,3 +41,6 @@ app.listen(process.env.PORT, () => {
     console.log(figlet.textSync(`port`));    
     console.log(figlet.textSync(`${process.env.PORT}`));    
 });
+
+
+

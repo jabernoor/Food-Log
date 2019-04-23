@@ -1,19 +1,13 @@
 import mysql from "mysql";
-
+import config from './config'
 import Sequelize from "sequelize";
 
 const sequelize = new Sequelize('food_server', 'root', 'root', {
-    host: 'mysql',
-    port: 3306,
+    host: config.host,
+    port: config.port,
     dialect: 'mysql',
     operatorsAliases: false,
-
-    pool: {
-        max: 1000,
-        min: 5,
-        acquire: 30000,
-        idle: 10000
-    },
+    pool: config.pool
 });
 sequelize.query("SET foreign_key_checks = 0;").spread((results, metadata) => {
 })

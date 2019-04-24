@@ -1,6 +1,6 @@
-import schema from '../../schemes/OrderEntrySchema';
+import schema from '../../database/schemes/OrderEntrySchema';
 import Unit from './unit'
-import {findByPK} from '../../schemes/crud/crud';
+import {findByPK} from '../../database/schemes/crud/crud';
 
 class OrderEntry {
 

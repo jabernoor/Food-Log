@@ -1,8 +1,8 @@
-import schema from '../../schemes/OrderSchema';
+import schema from '../../database/schemes/OrderSchema';
 import {
     findByPK
-} from '../../schemes/crud/crud';
-import OrderEntrySchema from '../../schemes/OrderEntrySchema';
+} from '../../database/schemes/crud/crud';
+import OrderEntrySchema from '../../database/schemes/OrderEntrySchema';
 import FoodProvider from './provider'
 import OrderEntry from './orderEntries'
 import User from './user';

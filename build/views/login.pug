@@ -1,0 +1,7 @@
+extends layout
+block content
+    .signin.center
+        form(action='/oauth/google', method='get')
+            p Authenticate using Google
+            button.loginBtn.loginBtn--google(type='submit') Sign in with a Google Account
+            br

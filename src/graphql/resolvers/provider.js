@@ -1,5 +1,5 @@
-import schema from '../../schemes/FoodProviderSchema';
-import {findByPK} from '../../schemes/crud/crud';
+import schema from '../../database/schemes/FoodProviderSchema';
+import {findByPK} from '../../database/schemes/crud/crud';
 
 class FoodProvider {
 

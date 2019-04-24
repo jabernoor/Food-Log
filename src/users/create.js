@@ -1,6 +1,6 @@
 import execute from '../database/executor'
 import sequelize from '../database/database'
-import User from '../schemes/UserSchema'
+import User from '../database/schemes/UserSchema'
 
 export const create = (params) => {
     return new Promise((resolve, reject) => {

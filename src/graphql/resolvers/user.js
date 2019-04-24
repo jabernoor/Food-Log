@@ -1,5 +1,5 @@
-import schema from '../../schemes/UserSchema';
-import {findByPK} from '../../schemes/crud/crud';
+import schema from '../../database/schemes/UserSchema';
+import {findByPK} from '../../database/schemes/crud/crud';
 class User {
 
     constructor(id){

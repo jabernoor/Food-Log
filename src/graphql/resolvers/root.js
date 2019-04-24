@@ -10,7 +10,7 @@ import {
     OrderCrud,
     OrderEntryCrud,
     UnitCrud
-} from '../../schemes/crud/crud'
+} from '../../database/schemes/crud/crud'
 
 export default {
     order: async ({id}) => {

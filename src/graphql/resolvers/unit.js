@@ -1,7 +1,7 @@
-import unit from '../../schemes/UnitSchema'
-import schema from '../../schemes/UnitSchema';
+import unit from '../../database/schemes/UnitSchema'
+import schema from '../../database/schemes/UnitSchema';
 import FoodProvider from './provider'
-import {findByPK} from '../../schemes/crud/crud';
+import {findByPK} from '../../database/schemes/crud/crud';
 
 class Unit {
 

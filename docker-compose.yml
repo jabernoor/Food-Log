@@ -1,7 +1,7 @@
 version: '2.1'
 services:
-  app:
-    build: ./
+  api:
+    build: ./graphql-api
     volumes: 
       - npm-cache:/root/.npm
     links: 

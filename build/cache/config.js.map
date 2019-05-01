@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/cache/config.js"],"names":["enabled"],"mappings":";;;;;kBAAc;AACVA,aAAQ;AADE,C","file":"config.js","sourcesContent":["export default{\n    enabled:true\n}"]}

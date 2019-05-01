@@ -1,4 +1,7 @@
-node_modules
-dist
-.env
-package-lock.json
+./graphql-api/node_modules
+./graphql-api/build
+./graphql-api/.env
+./graphql-api/.env.docker
+./web-app/node_modules
+./web-app/build
+./web-app/.env

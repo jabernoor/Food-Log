@@ -1,5 +1,0 @@
-{
-    "google_client_id":"885449576776-o75qhhp5mgjcrtd5rnmghmp9iqt3ke59.apps.googleusercontent.com",
-    "google_client_secret":"Y5gGR7bfiAIm_-qSqLtaMJPC",
-    "google_callback_url": "http://127.0.0.1:5002/oauth/google/callback"
-}

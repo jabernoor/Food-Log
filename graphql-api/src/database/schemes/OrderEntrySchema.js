@@ -19,7 +19,7 @@ const OrderEntry = database.define('order_entries',{
         }        
     },
     user_id:{
-        type: datatype.STRING,                
+        type: datatype. BIGINT,                
         references:{
             model: User,
             key: 'id'

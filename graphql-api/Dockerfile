@@ -10,7 +10,7 @@ RUN npm install
 
 RUN npm install pm2 -g
 
-RUN pm2 link au1sb9qgew1n4hq 4ockgy74d36pn2n docker-food-log
+# RUN pm2 link au1sb9qgew1n4hq 4ockgy74d36pn2n docker-food-log
 
 
 COPY . .
@@ -31,4 +31,5 @@ EXPOSE 5000
 
 
 # pm2 start -n food-log -i 1 ./build/index.js
-CMD ["pm2-runtime","start","-n","food-log","-i","4","npm","--","run","start"]
+CMD ["node","./build/bin/www.js"]
+# CMD ["pm2-runtime","start","-n","food-log","-i","4","./build/bin/www.js"]

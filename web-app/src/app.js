@@ -19,7 +19,14 @@ app.use(sessionConfig);
 app.use(responseTime());
 app.use(helmet())
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session({
+    secret: 'cookie_secret',
+    name: 'cookie_name',
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 app.use(express.static('public'));
@@ -30,6 +37,8 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', indexRouter);
 
-app.listen(5000,()=>{
-    console.log('listening at port ',5000);
+app.listen(5002, () => {
+    console.log('listening at port ', 5002);
 })
+
+export default app;

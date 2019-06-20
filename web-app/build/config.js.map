@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/config.js"],"names":["gqlRoute","apiHost"],"mappings":";;;;;kBAAe;AACXA,cAAS,+BADE;AAEXC,aAAQ;AAFG,C","file":"config.js","sourcesContent":["export default {\n    gqlRoute:'http://localhost:5000/graphql',\n    apiHost:'http://localhost:5000'\n}"]}

@@ -30,10 +30,7 @@ _passport2.default.use(new _passportGoogleOauth.OAuth2Strategy({
     params['email'] = profile.emails[0].value;
     params['imagePath'] = profile.photos[0].value;
     params['oauthProvider'] = profile.provider;
-
-    // findOrCreate(params);
-
-    return done(null, profile);
+    return done(null, params);
 }));
 
 _passport2.default.serializeUser(function (user, done) {

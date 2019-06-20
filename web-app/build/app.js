@@ -1,5 +1,9 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -49,7 +53,14 @@ app.use(_sessionConfig2.default);
 app.use((0, _responseTime2.default)());
 app.use((0, _helmet2.default)());
 app.use(_passport2.default.initialize());
-app.use(_passport2.default.session());
+app.use(_passport2.default.initialize());
+app.use(_passport2.default.session({
+    secret: 'cookie_secret',
+    name: 'cookie_name',
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 app.use(_express2.default.static('public'));
@@ -60,7 +71,9 @@ app.use(_bodyParser2.default.urlencoded({
 
 app.use('/', _indexRouter2.default);
 
-app.listen(5000, () => {
-    console.log('listening at port ', 5000);
+app.listen(5002, () => {
+    console.log('listening at port ', 5002);
 });
+
+exports.default = app;
 //# sourceMappingURL=app.js.map

@@ -4,7 +4,8 @@ import config from '../config'
 
 const User = database.define('user', {
     id: {
-        type: datatype.STRING,
+        type: datatype.BIGINT,
+        autoIncrement: true,
         primaryKey: true
     },
     name: {
@@ -12,7 +13,8 @@ const User = database.define('user', {
     },
     email: {
         type: datatype.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     imagePath: {
         type: datatype.STRING

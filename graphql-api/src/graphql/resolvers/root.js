@@ -54,7 +54,7 @@ export default {
         return await OrderCrud.create(input);
     },
     createUser: async ({input}) => {
-        return await userCrud.create(input);
+        return await UserCrud.createIfNotExist(input);
     },
     updateFoodProvider: async ({input, id})=>{
         return await FoodProviderCrud.update(input,id);        

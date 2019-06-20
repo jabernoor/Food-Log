@@ -28,16 +28,23 @@ router.use('/oauth', _router2.default);
 
 router.use('/dashboard', (req, res) => {
     if (!req.isAuthenticated()) {
-        res.redirect('/login');
+        return res.redirect('/login');
     }
-    res.render('dashboard');
+    return res.render('dashboard', { data: { isLoggedIn: true, user: req.user } });
+});
+
+router.use('/orders', (req, res) => {
+    if (!req.isAuthenticated()) {
+        return res.redirect('/login');
+    }
+    return res.render('orders', { data: { isLoggedIn: true } });
 });
 
 router.get('/login', (req, res) => {
     if (req.isAuthenticated()) {
-        res.redirect('/dashboard');
+        return res.redirect('/dashboard');
     }
-    res.render('login');
+    return res.render('login', { data: { isLoggedIn: false } });
 });
 
 exports.default = router;

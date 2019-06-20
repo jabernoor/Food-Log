@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/cache/config.js"],"names":["enabled","process","env","CACHE_SERVICE_ENABLED"],"mappings":";;;;;kBAAe;AACXA,aAASC,QAAQC,GAAR,CAAYC,qBAAZ,IAAqC,MAArC,GAA8C,IAA9C,GAAqD;AADnD,C","file":"config.js","sourcesContent":["export default {\n    enabled: process.env.CACHE_SERVICE_ENABLED == \"true\" ? true : false\n}"]}

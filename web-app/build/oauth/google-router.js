@@ -17,10 +17,10 @@ router.get('/', _google2.default.authenticate('google', {
 }));
 
 router.get('/callback', _google2.default.authenticate('google', {
-    successRedirect: '/dashboard',
+    successRedirect: '/oauth/success',
     failureRedirect: '/login'
 }), function (req, res) {
-    res.redirect('/');
+    console.log('after callback');
 });
 
 module.exports = router;

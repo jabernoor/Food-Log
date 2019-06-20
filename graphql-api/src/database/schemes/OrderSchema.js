@@ -21,7 +21,7 @@ const Order = database.define('orders',{
         }       
     },
     creatorId: {
-        type: datatype.STRING,
+        type: datatype.BIGINT,
         references:{
             model:User,
             key:'id'

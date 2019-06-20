@@ -16,10 +16,7 @@ passport.use(new GoogleStrategy({
         params['email'] = profile.emails[0].value;
         params['imagePath'] = profile.photos[0].value;
         params['oauthProvider'] = profile.provider;
-
-        // findOrCreate(params);
-
-        return done(null, profile);
+        return done(null, params);
     }
 ));
 

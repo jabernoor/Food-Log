@@ -1,3 +1,6 @@
+.idea
+.vscode
+dump.rdb
 ./graphql-api/node_modules
 ./graphql-api/build
 ./graphql-api/.env

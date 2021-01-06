@@ -16,7 +16,7 @@
   "dependencies": {
     "@pm2/io": "^4.1.4",
     "apollo-server-express": "^2.4.8",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.3",
     "body-parser": "latest",
     "compression": "^1.7.4",

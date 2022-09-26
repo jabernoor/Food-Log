@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pm2/io": "^4.1.4",
+    "@pm2/io": "^5.0.0",
     "apollo-server-express": "^2.4.8",
     "axios": "^0.19.0",
     "bluebird": "^3.5.3",
